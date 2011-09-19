@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: A better plugin to add the proper technical Facebook meta data to a WP site so when your pages, posts and/or custom post types are shared on Facebook it looks awesome. More advanced features in planning and to come soon.
-Version: 1.2
+Version: 1.3
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '1.2');
+define('WPFBOGP_VERSION', '1.3');
 wpfbogp_admin_warnings();
 
 // version check
@@ -104,7 +104,7 @@ function wpfbogp_build_head() {
 			if (has_excerpt($post->ID)) {
 				echo "\t<meta property='og:description' content='".esc_attr(strip_tags(get_the_excerpt($post->ID)))."' />\n";
 			}else{
-				echo "\t<meta property='og:description' content='".get_bloginfo('description')."' />\n";
+				echo "\t<meta property='og:description' content='".esc_attr(substr(strip_tags($post->post_content), 0, 160))."' />\n";
 			}
 		}else{
 			echo "\t<meta property='og:description' content='".get_bloginfo('description')."' />\n";
@@ -296,5 +296,25 @@ function wpfbogp_fix_excerpts_exist() {
 	remove_filter('get_the_excerpt','twentyten_custom_excerpt_more');
 	remove_filter('get_the_excerpt','twentyeleven_custom_excerpt_more');
 }
+
+// add settings link to plugins list
+function wpfbogp_add_settings_link($links, $file) {
+	static $this_plugin;
+	if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+		if ($file == $this_plugin){
+			$settings_link = '<a href="options-general.php?page=wpfbogp">'.__("Settings","wpfbogp").'</a>';
+			array_unshift($links, $settings_link);
+		}
+	return $links;
+}
+add_filter('plugin_action_links','wpfbogp_add_settings_link', 10, 2 );
+
+// lets offer an actual clean uninstall and rem db row on uninstall
+if (function_exists('register_uninstall_hook')) {
+    register_uninstall_hook(__FILE__, 'wpfbogp_uninstall_hook');
+		function wpfbogp_uninstall_hook() {
+			delete_option('wpfbogp');
+		}
+	}
 
 ?>
