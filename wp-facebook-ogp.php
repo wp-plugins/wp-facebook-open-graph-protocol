@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: A better plugin to add the proper technical Facebook meta data to a WP site so when your pages, posts and/or custom post types are shared on Facebook it looks awesome. More advanced features in planning and to come soon.
-Version: 1.3
+Version: 1.3.5
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '1.3');
+define('WPFBOGP_VERSION', '1.3.5');
 wpfbogp_admin_warnings();
 
 // version check
@@ -86,7 +86,7 @@ function wpfbogp_build_head() {
 		if (is_home() || is_front_page() ) {
 			echo "\t<meta property='og:url' content='".get_bloginfo('url')."' />\n";
 		}else{
-			echo "\t<meta property='og:url' content='".get_permalink($post->ID)."' />\n";
+			echo "\t<meta property='og:url' content='http://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']."' />\n";
 		}
 		
 		// do title stuff
@@ -104,7 +104,7 @@ function wpfbogp_build_head() {
 			if (has_excerpt($post->ID)) {
 				echo "\t<meta property='og:description' content='".esc_attr(strip_tags(get_the_excerpt($post->ID)))."' />\n";
 			}else{
-				echo "\t<meta property='og:description' content='".esc_attr(substr(strip_tags($post->post_content), 0, 160))."' />\n";
+				echo "\t<meta property='og:description' content='".esc_attr(str_replace("\r\n",' ',substr(strip_tags(strip_shortcodes($post->post_content)), 0, 160)))."' />\n";
 			}
 		}else{
 			echo "\t<meta property='og:description' content='".get_bloginfo('description')."' />\n";
@@ -125,8 +125,8 @@ function wpfbogp_build_head() {
 				echo "\t<!-- There is not an image here as you haven't set a default image in the plugin settings! -->\n"; 
 			}
 		} else {
-			if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) {
-				$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium' );
+			if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail($post->ID))) {
+				$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' );
 				echo "\t<meta property='og:image' content='".esc_attr($thumbnail_src[0])."' />\n";
 			}elseif (( wpfbogp_first_image() !== false ) && (is_singular())) {
 				echo "\t<meta property='og:image' content='".wpfbogp_first_image()."' />\n";
