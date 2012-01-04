@@ -3,7 +3,7 @@ Contributors: ryno267
 Donate link: http://goo.gl/8lGv3
 Tags: facebook, open graph, ogp, google +1, +1, google plus one, plus one, facebook meta, open graph meta, featured image, facebook share, facebook like 
 Requires at least: 3.0
-Tested up to: 3.3
+Tested up to: 3.3.1
 Stable tag: trunk
 
 Adds the proper Facebook meta tags and values to your site and/or blog so when your pages and posts are shared it looks awesome and provides Facebook with good data.
