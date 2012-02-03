@@ -48,6 +48,12 @@ Honestly it's not hard to add one once you have the proper meta content in the h
 
 == Changelog ==
 
+= 1.5 =
+* simple cleanup and couple bug fixes
+* fix image path auto pulled from content if there wasn't a basepath
+* fix for custom post type og:description. (props Leia Scofield) did same for og:type
+* remove hidden code for old contextual menus that never happened
+
 = 1.4 =
 * added og:locale as facebook has started requiring that for valid ogp
 
