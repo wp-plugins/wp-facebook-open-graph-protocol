@@ -1,5 +1,5 @@
 === WP Facebook Open Graph protocol ===
-Contributors: ryno267
+Contributors: ryno267, andrewryno
 Donate link: http://goo.gl/8lGv3
 Tags: facebook, open graph, ogp, google +1, +1, google plus one, plus one, facebook meta, open graph meta, featured image, facebook share, facebook like 
 Requires at least: 3.0
