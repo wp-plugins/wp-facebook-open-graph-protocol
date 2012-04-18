@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: A better plugin to add the proper technical Facebook meta data to a WP site so when your pages, posts and/or custom post types are shared on Facebook it looks awesome. More advanced features in planning and to come soon.
-Version: 1.6
+Version: 1.6.1
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '1.6');
+define('WPFBOGP_VERSION', '1.6.1');
 wpfbogp_admin_warnings();
 
 // version check
@@ -101,7 +101,15 @@ function wpfbogp_build_head() {
 		}
 		
 		// do title stuff
-		echo "\t<meta property='og:title' content='".wp_title('', false)."' />\n";
+		if (is_home() || is_front_page() ) {
+			echo "\t<meta property='og:title' content='".get_bloginfo('name')."' />\n";
+		}else{
+			echo "\t<meta property='og:title' content='".get_the_title()."' />\n";
+		}
+		// initial 1.6 change but issues w/ peeps not using seo plugins.
+		// need a better way to handle 'naked sites'. Will fix soonish; standby...
+		// echo "\t<meta property='og:title' content='".wp_title('', false)."' />\n";
+		
 		
 		// do additional randoms
 		echo "\t<meta property='og:site_name' content='".get_bloginfo('name')."' />\n";
