@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome! Works on Google + and Linkedin too!
-Version: 2.0
+Version: 2.0.2
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '2.0');
+define('WPFBOGP_VERSION', '2.0.2');
 wpfbogp_admin_warnings();
 
 // add OGP namespace per ogp.me schema
@@ -38,8 +38,8 @@ add_filter('language_attributes','wpfbogp_namespace');
 function wpfbogp_find_images() {
 	global $post, $posts;
 	
-	// Grab filtered content (so all shorttags are fired) and match first image
-	$content = apply_filters( 'the_content', $post->post_content );
+	// Grab content and match first image
+	$content = $post->post_content;
 	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches );
 	
 	// Make sure there was an image that was found, otherwise return false
@@ -60,34 +60,34 @@ function wpfbogp_find_images() {
 	return $wpfbogp_images;
 }
 
-function start_output_buffer() {
+function wpfbogp_start_ob() {
 	// Start the buffer before any output
-	ob_start();
+	ob_start( 'wpfbogp_callback' );
 }
 
-function flush_buffer() {
-	// Get the entire page HTML output and grab the page title and meta description
-	$content = ob_get_contents();
+function wpfbogp_callback( $content ) {
+	// Grab the page title and meta description
 	$title = preg_match( '/<title>(.*)<\/title>/', $content, $title_matches );
-	
 	$decsription = preg_match( '/<meta name="description" content="(.*)"/', $content, $description_matches );
 	
 	// Take page title and meta description and place it in the ogp meta tags
-	if ( $title !== FALSE ) {
+	if ( $title !== FALSE && count( $title_matches ) == 2 ) {
 		$content = preg_replace( '/<meta property="og:title" content="(.*)">/', '<meta property="og:title" content="' . $title_matches[1] . '">', $content );
 	}
-	if ( $description !== FALSE ) {
+	
+	if ( $description !== FALSE && count( $description_matches ) == 2 ) {
 		$content = preg_replace( '/<meta property="og:description" content="(.*)">/', '<meta property="og:description" content="' . $description_matches[1] . '">', $content );
 	}
 	
-	// End output buffer and echo content
-	ob_end_clean();
-	
-	echo $content;
+	return $content;
 }
 
-add_action( 'get_header', 'start_output_buffer' );
-add_action( 'wp_footer', 'flush_buffer', 15 ); // Fire after other plugins (which default to priority 10)
+function wpfbogp_flush_ob() {
+	ob_end_flush();
+}
+
+add_action( 'init', 'wpfbogp_start_ob', 0 );
+add_action( 'wp_footer', 'wpfbogp_flush_ob', 10000 ); // Fire after other plugins (which default to priority 10)
 
 // build ogp meta
 function wpfbogp_build_head() {
@@ -111,7 +111,7 @@ function wpfbogp_build_head() {
 		if (is_home() || is_front_page() ) {
 			$wpfbogp_url = get_bloginfo( 'url' );
 		} else {
-			$wpfbogp_url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . "://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$wpfbogp_url = 'http' . (is_ssl() ? 's' : '') . "://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		}
 		echo '<meta property="og:url" content="' . esc_url( apply_filters( 'wpfbogp_url', $wpfbogp_url ) ) . '">' . "\n";
 		
@@ -139,7 +139,7 @@ function wpfbogp_build_head() {
 		echo '<meta property="og:description" content="' . esc_attr( apply_filters( 'wpfbogp_description', $wpfbogp_description ) ) . '">' . "\n";
 		
 		// do ogp type
-		if ( is_singular() ) {
+		if ( is_single() ) {
 			$wpfbogp_type = 'article';
 		} else {
 			$wpfbogp_type = 'website';
@@ -268,7 +268,7 @@ function wpfbogp_buildpage() {
 			</tr>
 			<tr valign="top">
 				<th scope="row"><?php _e('Force Fallback Image as Default') ?></th>
-				<td><input type="checkbox" name="wpfbogp[wpfbogp_force_fallback]" value="" <?php if ($options['wpfbogp_force_fallback'] == 1) echo 'checked="checked"'; ?>) /> <?php _e('Use this if you want to use the Default Image for everything instead of looking for featured/content images.') ?></label></td>
+				<td><input type="checkbox" name="wpfbogp[wpfbogp_force_fallback]" value="1" <?php if ($options['wpfbogp_force_fallback'] == 1) echo 'checked="checked"'; ?>) /> <?php _e('Use this if you want to use the Default Image for everything instead of looking for featured/content images.') ?></label></td>
 			</tr>
 		</table>
 		
@@ -290,7 +290,7 @@ function wpfbogp_validate($input) {
 	$input['wpfbogp_admin_ids'] = wp_filter_nohtml_kses($input['wpfbogp_admin_ids']);
 	$input['wpfbogp_app_id'] = wp_filter_nohtml_kses($input['wpfbogp_app_id']);
 	$input['wpfbogp_fallback_img'] = wp_filter_nohtml_kses($input['wpfbogp_fallback_img']);
-	$input['wpfbogp_force_fallback'] = isset($input['wpfbogp_force_fallback']) ? 1 : 0;
+	$input['wpfbogp_force_fallback'] = ($input['wpfbogp_force_fallback'] == 1)  ? 1 : 0;
 	return $input;
 }
 
