@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome! Works on Google + and Linkedin too!
-Version: 2.0.1
+Version: 2.0.2
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '2.0.1');
+define('WPFBOGP_VERSION', '2.0.2');
 wpfbogp_admin_warnings();
 
 // add OGP namespace per ogp.me schema
@@ -38,8 +38,8 @@ add_filter('language_attributes','wpfbogp_namespace');
 function wpfbogp_find_images() {
 	global $post, $posts;
 	
-	// Grab filtered content (so all shorttags are fired) and match first image
-	$content = apply_filters( 'the_content', $post->post_content );
+	// Grab content and match first image
+	$content = $post->post_content;
 	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches );
 	
 	// Make sure there was an image that was found, otherwise return false
@@ -87,7 +87,7 @@ function wpfbogp_flush_ob() {
 }
 
 add_action( 'init', 'wpfbogp_start_ob', 0 );
-add_action( 'wp_footer', 'wpfbogp_end_ob', 10000 ); // Fire after other plugins (which default to priority 10)
+add_action( 'wp_footer', 'wpfbogp_flush_ob', 10000 ); // Fire after other plugins (which default to priority 10)
 
 // build ogp meta
 function wpfbogp_build_head() {

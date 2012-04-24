@@ -48,6 +48,9 @@ Honestly it's not hard to add one once you have the proper meta content in the h
 1. The Open Graph admin options panel has all options laid out in one easy place. The rest is all behind the scenes.
 
 == Upgrade Notice ==
+= 2.0.2 = 
+Fixes bug that caused a PHP warning to display and also fixes bugs with plugins not functioning properly when using content filters.
+
 = 2.0.1 =
 Bug fixes for HTTPS/SSL pages, SEO plugins, force fallback images and more.
 
@@ -61,6 +64,10 @@ Bug fix with 1.6 initial release. Titles broke for some running 'naked sites' w/
 Because we're getting more accurate titles you may see a change in how they're pulled. If you're using an SEO plugin it should now pull that title
 
 == Changelog ==
+= 2.0.2 =
+* Fixes bug that would display a PHP warning with debug mode turned on.
+* Removed code that would filter the_content() which caused problems with plugins that also used that same filter.
+
 = 2.0.1 =
 * Fixed bug where og:url was returning a https URL instead of http, causing Facebook Linter to fail. Now using the WordPress function is_ssl() instead of the $_SERVER global variable.
 * Fixed bug with some SEO plugins where the page title and meta description were not being pulled correctly.
