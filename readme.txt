@@ -4,7 +4,7 @@ Donate link: http://goo.gl/8lGv3
 Tags: open graph, ogp, facebook open graph, google +1, +1, google plus one, plus one, linkedin share, facebook meta, open graph meta, facebook share, facebook like, linkedin
 Requires at least: 3.0
 Tested up to: 3.3.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome!
 
