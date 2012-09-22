@@ -3,7 +3,7 @@
 Plugin Name: WP Facebook Open Graph protocol
 Plugin URI: http://wordpress.org/extend/plugins/wp-facebook-open-graph-protocol/
 Description: Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome! Works on Google + and Linkedin too!
-Version: 2.0.5
+Version: 2.0.6
 Author: Chuck Reynolds
 Author URI: http://chuckreynolds.us
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define('WPFBOGP_VERSION', '2.0.5');
+define('WPFBOGP_VERSION', '2.0.6');
 wpfbogp_admin_warnings();
 
 // add OGP namespace per ogp.me schema
@@ -72,11 +72,11 @@ function wpfbogp_callback( $content ) {
 	
 	// Take page title and meta description and place it in the ogp meta tags
 	if ( $title !== FALSE && count( $title_matches ) == 2 ) {
-		$content = stripslashes( preg_replace( '/<meta property="og:title" content="(.*)">/', '<meta property="og:title" content="' . preg_quote( $title_matches[1] ) . '">', $content ) );
+		$content = preg_replace( '/<meta property="og:title" content="(.*)">/', '<meta property="og:title" content="' . $title_matches[1] . '">', $content );
 	}
 	
 	if ( $description !== FALSE && count( $description_matches ) == 2 ) {
-		$content = stripslashes( preg_replace( '/<meta property="og:description" content="(.*)">/', '<meta property="og:description" content="' . preg_quote( $description_matches[1] ) . '">', $content ) );
+		$content = preg_replace( '/<meta property="og:description" content="(.*)">/', '<meta property="og:description" content="' . $description_matches[1] . '">', $content );
 	}
 	
 	return $content;
