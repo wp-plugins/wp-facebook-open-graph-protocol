@@ -3,10 +3,10 @@ Contributors: ryno267, andrewryno
 Donate link: http://goo.gl/8lGv3
 Tags: open graph, ogp, facebook open graph, google +1, +1, google plus one, plus one, linkedin share, facebook meta, open graph meta, facebook share, facebook like, linkedin
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 2.0.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 3.6
+Stable tag: 2.1
+License: GPL v3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome!
 
@@ -29,6 +29,10 @@ Once you've enabled the plugin head over to Facebook's testing tool and paste in
 = Plugin Roadmap =
 If you have feature requests or bugs? Use the support links on <a href="http://rynoweb.com/wordpress-plugins/" title="rynoweb wordpress plugins">rYnoweb.com/WordPress-Plugins</a> and get in touch.
 
+= Development =
+* Contribute Code at [https://github.com/chuckreynolds/WPFBOGP](https://github.com/chuckreynolds/WPFBOGP)
+* Contribute Translations at [https://translate.foe-services.de/projects/wpfbogp](https://translate.foe-services.de/projects/wpfbogp)
+
 == Installation ==
 
 1. Upload the `wp-facebook-ogp` folder to the `/wp-content/plugins/` directory
@@ -38,16 +42,19 @@ If you have feature requests or bugs? Use the support links on <a href="http://r
 == Frequently Asked Questions ==
 
 = Do I need to create a Facebook Application to use this plugin? =
-No. Either your Facebook User ID or or an Application ID is a requirement. You're not required to register an app, instead just use your User ID (plugin admin settings page helps you find that). You can use both an App ID and User ID if you'd like. More details on how Facebook verifies admins is located here: https://developers.facebook.com/docs/insights/
+No. Either your Facebook User ID or an Application ID is a requirement. You're not required to register an app, instead just use your User ID (plugin admin settings page helps you find that). You can use both an App ID and User ID if you'd like. More details on how Facebook verifies admins is located here: https://developers.facebook.com/docs/insights/
 
 = Why doesn't this plugin have a Like/Send button? =
-Honestly it's not hard to add one once you have the proper meta content in the header. Look at <a href="https://developers.facebook.com/docs/reference/plugins/like/">how to add a Like button</a> using fb:like. There are a lot of 'like' button plugins but this one focuses on solid and accurate Open Graph meta data. 
+Honestly it's not hard to add one once you have the proper meta content in the header. Look at <a href="https://developers.facebook.com/docs/reference/plugins/like/">how to add a Like button</a> using fb:like. There are a lot of 'like' button plugins but this one focuses on solid and accurate Open Graph meta data.
 
 == Screenshots ==
 
 1. The Open Graph admin options panel has all options laid out in one easy place. The rest is all behind the scenes.
 
 == Upgrade Notice ==
+= 2.1 =
+This is a pretty significant update and fixes a lot of bugs and cleans up a lot too.
+
 = 2.0.7 =
 fixes bug with certain plugins not showing description tags properly
 
@@ -60,7 +67,7 @@ Fixes issues with dollar signs and special characters in titles and descriptions
 = 2.0.3 =
 This update should fix the "Parser Mismatched Metadata" warnings Facebook started throwing.
 
-= 2.0.2 = 
+= 2.0.2 =
 Fixes bug that caused a PHP warning to display and also fixes bugs with plugins not functioning properly when using content filters.
 
 = 2.0.1 =
@@ -76,6 +83,22 @@ Bug fix with 1.6 initial release. Titles broke for some running 'naked sites' w/
 Because we're getting more accurate titles you may see a change in how they're pulled. If you're using an SEO plugin it should now pull that title
 
 == Changelog ==
+= 2.1 =
+* added a link to test current page in Facebook Debugger via the Admin bar. #USEFUL!
+* translation support, German translation
+* change media link in admin to media-new.php from base media library list
+* change sort so default image shows up first when other images set
+* contingency for if default checkbox is set but no default image is set
+* update html namespace to prefix (ogp.me) from xmlns (facebook)
+* testing the_title_attribute('echo=0') in title drop
+* non-admins won't see warning information anymore - only admins
+* complete update to GPL v3
+* fix in the image scrubber if one not set
+* new buffer to filter all the metas from framworks and seo plugins. was troublesome before - this should be nicer
+* one fb:admin per meta tag now. Facebook decided having multiple in one field is no longer cool
+* added og:type blog for when on main blog page instead of wrapping that as type website
+* lot of code cleanup and better organization
+
 = 2.0.7 =
 * fixes bug with certain plugins not showing description tags properly
 * added back self-close on meta tags to preserve xhtml compatability, html5 is forgiving. core does this.
@@ -127,7 +150,7 @@ Because we're getting more accurate titles you may see a change in how they're p
 * bug fix in urlpath again & check for https. Props goes to Seb Francis at burnit.co.uk for better fix.
 
 = 1.5.1 =
-* bug fix in image basepath thing I fixed in 1.5... false checking. make sure to update this or your images could not display on facebook 
+* bug fix in image basepath thing I fixed in 1.5... false checking. make sure to update this or your images could not display on facebook
 
 = 1.5 =
 * simple cleanup and couple bug fixes
@@ -192,3 +215,12 @@ Because we're getting more accurate titles you may see a change in how they're p
 
 == Other Notes ==
 
+= LinkedIn Documentation =
+Linkedin (as of 2013-04-10) only requires the Open Graph title, description, url and image (min 80x150) as per this page http://developer.linkedin.com/documents/share-api
+Test with Linkedin:
+
+Google Plus still (as of 2013-04-10) pulls Open Graph data as well but is still limited to title, description, url and image as per this page https://developers.google.com/+/web/snippet/  but no image sizes are designated.
+Test with Google: http://www.google.com/webmasters/tools/richsnippets
+
+Some have asked about Twitter support... they have recently (as of 2013-04) added cards but this is out of the scope of this plugin.
+Summary Card info for those still interested: https://dev.twitter.com/docs/cards/types/summary-card
