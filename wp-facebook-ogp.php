@@ -255,7 +255,7 @@ class WPFBOGP {
 			if ( is_singular() ) {
 				// Find featured thumbnail of the current post/page
 				if ( function_exists( 'has_post_thumbnail' ) && has_post_thumbnail( $post->ID ) ) {
-					$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+					$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 					$wpfbogp_images[] = $thumbnail_src[0]; // Add to images array
 				}
 
