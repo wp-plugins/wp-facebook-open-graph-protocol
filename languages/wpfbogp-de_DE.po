@@ -1,0 +1,114 @@
+# Translation of WP Facebook Open Graph protocol in German
+# This file is distributed under the same license as the WP Facebook Open Graph protocol package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-01-02 08:29:18+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: translate.foe-services.de/ReGlot/0.1\n"
+"Project-Id-Version: WP Facebook Open Graph protocol\n"
+"Language-Team: Translate.foe-services.de <translate@foe-services.de>\n"
+"Language: German\n"
+
+#: wp-facebook-ogp.php:272
+msgid "media uploader"
+msgstr "Medien hinzufügen"
+
+#: wp-facebook-ogp.php:275
+msgid "Force Fallback Image as Default"
+msgstr "Angegebene Grafik-URL standardmäßig nutzen:"
+
+#: wp-facebook-ogp.php:276
+msgid "Use this if you want to use the Default Image for everything instead of looking for featured/content images."
+msgstr "Aktiviere diese Option, wenn du die Standard-Grafik der Suche nach einer Grafik auf der Seite vorziehen möchtest."
+
+#: wp-facebook-ogp.php:308
+msgid "WP FB OGP is almost ready."
+msgstr "WP FB OGP ist fast bereit."
+
+#: wp-facebook-ogp.php:308
+msgid "You must %s for it to work."
+msgstr "Du musst %s damit es funktioniert."
+
+#: wp-facebook-ogp.php:308
+msgid "enter your Facebook User ID or App ID"
+msgstr "deine Facebook Benutzer ID oder App ID eingeben"
+
+#: wp-facebook-ogp.php:216
+msgid "About the Plugin:"
+msgstr "Über dieses Plugin:"
+
+#: wp-facebook-ogp.php:218
+msgid "Talk to %s on twitter or please fill out the %s for bugs or feature requests."
+msgstr "Sprich mit %s bei Twitter oder fülle das %s bei Bugs oder Feature requests aus."
+
+#: wp-facebook-ogp.php:218
+msgid "plugin support form"
+msgstr "Plugin Support-Formular"
+
+#: wp-facebook-ogp.php:219
+msgid "Enjoy the plugin?"
+msgstr "Magst du das Plugin?"
+
+#: wp-facebook-ogp.php:220
+msgid "%s and consider donating."
+msgstr "%s und ziehe eine Spende in Betracht."
+
+#: wp-facebook-ogp.php:220
+msgid "Tweet about it"
+msgstr "Tweete über das Plugin"
+
+#: wp-facebook-ogp.php:221
+msgid "<strong>Donate:</strong> A lot of hard work goes into building plugins - support your open source developers. Include your twitter username and I'll send you a shout out for your generosity. Thank you!"
+msgstr "<strong>Spende:</strong> Eine Menge harter Arbeit fließt in die Erstellung von Plugins - unterstütze deine Open-Source Entwickler. Gib deinen Twitter-Benutzernamen an und ich twitter deine Großzügigkeit. Vielen Dank!"
+
+#: wp-facebook-ogp.php:234
+msgid "Relevant Information:"
+msgstr "Relevante Informationen:"
+
+#: wp-facebook-ogp.php:258
+msgid "Facebook User Account ID:"
+msgstr "Facebook Benutzer ID:"
+
+#: wp-facebook-ogp.php:260
+msgid "For personal sites use your Facebook User ID here. <em>(You can enter multiple by separating each with a comma)</em>, if you want to receive Insights about the Like Buttons. The meta values will not display in your site until you've completed this box."
+msgstr "Bei persönlichen Seiten nutze deine Facebook Benutzer ID hier. <em>(Du kannst mehrere IDs nutzen, indem du diese mit einem Komma trennst)</em>, wenn du Statistiken (Insight) über deine Like-Buttons erhalten willst. Die Metadaten werden deiner Seite nicht hinzugefügt bevor du dieses Feld ausgefüllt hast."
+
+#: wp-facebook-ogp.php:261
+msgid "<strong>Find your ID</strong> by going to the URL like this:"
+msgstr "<strong>Finde deine ID</strong> indem du auf die URL in dieser Form gehst:"
+
+#: wp-facebook-ogp.php:264
+msgid "Facebook Application ID:"
+msgstr "Facebook Application ID:"
+
+#: wp-facebook-ogp.php:266
+msgid "For business and/or brand sites use Insights on an App ID as to not associate it with a particular person. You can use this with or without the User ID field. Create an app and use the \"App ID\": %s."
+msgstr "Bei Geschäfts- und/oder Marken-Seiten nutze die Statistiken (Insights) einer App ID um diese nicht mit einer bestimmten Person zu verknüpfen. Du kannst dies mit oder ohne das User ID Feld nutzen. Erstelle eine Facebook App und nutze die \"App ID\": %s."
+
+#: wp-facebook-ogp.php:266
+msgid "Create FB App"
+msgstr "FB App erstellen (EN)"
+
+#: wp-facebook-ogp.php:269
+msgid "Default Image URL to use:"
+msgstr "Standard Grafik-URL:"
+
+#: wp-facebook-ogp.php:271
+msgid "Full URL including http:// to the default image to use if your posts/pages don't have a featured image or an image in the content. <strong>The image is recommended to be 200px by 200px</strong>."
+msgstr "Vollständige URL inklusive http:// der Standard-Grafik, die genutzt wird, sollte der Beitrag oder die Seite keine Grafik enthalten. <strong>Die Grafik sollte empfohlener Maßen eine Seitenlänge von 200x200px besitzen</strong>."
+
+#: wp-facebook-ogp.php:272
+msgid "You can use the WordPress %s if you wish, just copy the location of the image and put it here."
+msgstr "Du kannst die WordPress %s-Funktion nutzen, kopiere die URL der Grafik und setze diese hier ein."
+
+#: wp-facebook-ogp.php:5
+msgid "Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome! Works on Google + and Linkedin too!"
+msgstr "Fügt korrekte Facebook Open Graph Meta Tags und Werte deiner Seite hinzu, sodass Links auf Facebook klasse aussehen! Funktioniert auch auf Google+ und LinkedIn!"
+
+#: wp-facebook-ogp.php:211
+msgctxt "Headline + Version"
+msgid "Facebook Open Graph protocol plugin %s"
+msgstr "Facebook Open Graph protocol Plugin %s"

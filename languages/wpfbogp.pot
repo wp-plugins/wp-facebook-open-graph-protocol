@@ -1,0 +1,133 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp\n"
+"POT-Creation-Date: 2013-01-02 07:01:06+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: wp-facebook-ogp.php:5
+msgid "Adds proper Facebook Open Graph Meta tags and values to your site so when links are shared it looks awesome! Works on Google + and Linkedin too!"
+msgstr ""
+
+#: wp-facebook-ogp.php:211
+msgctxt "Headline + Version"
+msgid "Facebook Open Graph protocol plugin %s"
+msgstr ""
+
+#: wp-facebook-ogp.php:216
+msgid "About the Plugin:"
+msgstr ""
+
+#: wp-facebook-ogp.php:218
+msgid ""
+"Talk to %s on twitter or please fill out the %s for bugs or feature requests."
+msgstr ""
+
+#: wp-facebook-ogp.php:218
+msgid "plugin support form"
+msgstr ""
+
+#: wp-facebook-ogp.php:219
+msgid "Enjoy the plugin?"
+msgstr ""
+
+#: wp-facebook-ogp.php:220
+msgid "%s and consider donating."
+msgstr ""
+
+#: wp-facebook-ogp.php:220
+msgid "Tweet about it"
+msgstr ""
+
+#: wp-facebook-ogp.php:221
+msgid ""
+"<strong>Donate:</strong> A lot of hard work goes into building plugins - "
+"support your open source developers. Include your twitter username and I'll "
+"send you a shout out for your generosity. Thank you!"
+msgstr ""
+
+#: wp-facebook-ogp.php:234
+msgid "Relevant Information:"
+msgstr ""
+
+#: wp-facebook-ogp.php:258
+msgid "Facebook User Account ID:"
+msgstr ""
+
+#: wp-facebook-ogp.php:260
+msgid ""
+"For personal sites use your Facebook User ID here. <em>(You can enter "
+"multiple by separating each with a comma)</em>, if you want to receive "
+"Insights about the Like Buttons. The meta values will not display in your "
+"site until you've completed this box."
+msgstr ""
+
+#: wp-facebook-ogp.php:261
+msgid "<strong>Find your ID</strong> by going to the URL like this:"
+msgstr ""
+
+#: wp-facebook-ogp.php:264
+msgid "Facebook Application ID:"
+msgstr ""
+
+#: wp-facebook-ogp.php:266
+msgid ""
+"For business and/or brand sites use Insights on an App ID as to not "
+"associate it with a particular person. You can use this with or without the "
+"User ID field. Create an app and use the \"App ID\": %s."
+msgstr ""
+
+#: wp-facebook-ogp.php:266
+msgid "Create FB App"
+msgstr ""
+
+#: wp-facebook-ogp.php:269
+msgid "Default Image URL to use:"
+msgstr ""
+
+#: wp-facebook-ogp.php:271
+msgid ""
+"Full URL including http:// to the default image to use if your posts/pages "
+"don't have a featured image or an image in the content. <strong>The image is "
+"recommended to be 200px by 200px</strong>."
+msgstr ""
+
+#: wp-facebook-ogp.php:272
+msgid ""
+"You can use the WordPress %s if you wish, just copy the location of the "
+"image and put it here."
+msgstr ""
+
+#: wp-facebook-ogp.php:272
+msgid "media uploader"
+msgstr ""
+
+#: wp-facebook-ogp.php:275
+msgid "Force Fallback Image as Default"
+msgstr ""
+
+#: wp-facebook-ogp.php:276
+msgid ""
+"Use this if you want to use the Default Image for everything instead of "
+"looking for featured/content images."
+msgstr ""
+
+#: wp-facebook-ogp.php:308
+msgid "WP FB OGP is almost ready."
+msgstr ""
+
+#: wp-facebook-ogp.php:308
+msgid "You must %s for it to work."
+msgstr ""
+
+#: wp-facebook-ogp.php:308
+msgid "enter your Facebook User ID or App ID"
+msgstr ""
+
