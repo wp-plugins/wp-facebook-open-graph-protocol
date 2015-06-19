@@ -89,12 +89,12 @@ Because we're getting more accurate titles you may see a change in how they're p
 
 == Changelog ==
 = 2.0.12 =
-*Release Date - 2015-06-19*
+Release Date - 2015-06-19
 * Changed how og:url is called and handle trailing slashes better all around
 * Fixed issue when using the blog as a page had root url
 
 = 2.0.11 =
-*Release Date - 2014-07-31*
+Release Date - 2014-07-31
 * Check for relative URLs in post thumbnails images - props -> github.com/jjeaton
 * fixes problem w/ strings in image array
 * flip image array. this will move your default image (if you have one) to the top of the array but Facebook pulls it the way they want anyways.
